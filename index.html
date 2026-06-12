@@ -8,6 +8,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="stylesheet" href="css/site.css">
 <style>
 /* ---------------- HOME specific ---------------- */
@@ -119,10 +122,28 @@
 .tcard .who span{font-size:13px;color:var(--ink-3);}
 
 @media(max-width:860px){
-  .hero-grid,.feat{grid-template-columns:1fr;gap:38px;}
+  .hero{padding:44px 0 60px;}
+  .hero-grid,.feat{grid-template-columns:1fr;gap:32px;}
   .feat.rev .feat-media{order:0;}
-  .metrics{grid-template-columns:repeat(2,1fr);gap:30px 10px;}
-  .float.f1{left:-6px;} .float.f2{right:-6px;}
+  .metrics{grid-template-columns:repeat(2,1fr);gap:24px 10px;}
+  .hero h1{font-size:clamp(32px,7vw,48px);margin:16px 0 14px;}
+  .hero .lead{max-width:100%;}
+  .float.f1{left:4px;top:-14px;} .float.f2{right:4px;}
+  .hero-trust{flex-wrap:wrap;gap:10px;}
+  .hero-demo{font-size:15px;}
+}
+@media(max-width:560px){
+  .hero{padding:36px 0 48px;}
+  .hero h1{font-size:clamp(28px,8vw,40px);}
+  .float.f1,.float.f2{display:none;}
+  .mock-app{border-radius:16px;}
+  .metrics{grid-template-columns:1fr 1fr;}
+  .metric b{font-size:clamp(26px,6vw,38px);}
+}
+@media(max-width:480px){
+  .hero-cta .hero-demo{display:none;}
+  .tcard q{font-size:15px;}
+  .feat-copy h2,.split-copy h2{font-size:clamp(18px,5.5vw,24px);}
 }
 </style>
 </head>
