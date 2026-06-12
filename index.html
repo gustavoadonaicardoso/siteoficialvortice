@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vórtice Tecnologia — Atendimento omnichannel, CRM e automações</title>
+<meta name="description" content="Centralize WhatsApp, Instagram e Messenger oficiais. CRM, pipeline, automações nativas e relatórios em tempo real para o time inteiro.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<style>
+/* ---------------- HOME specific ---------------- */
+.hero{position:relative;overflow:hidden;padding:64px 0 90px;}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(60% 60% at 88% 8%,rgba(79,0,203,.10),transparent 60%),
+  radial-gradient(50% 50% at 6% 30%,rgba(26,107,244,.08),transparent 60%);pointer-events:none;}
+.hero-grid{display:grid;grid-template-columns:1.04fr .96fr;gap:48px;align-items:center;position:relative;}
+.hero h1{font-size:clamp(40px,5.2vw,62px);margin:22px 0 20px;}
+.hero h1 .grad-text{display:inline;}
+.hero .lead{max-width:500px;}
+.hero-cta{display:flex;align-items:center;gap:18px;margin:32px 0 26px;flex-wrap:wrap;}
+.hero-demo{display:inline-flex;align-items:center;gap:10px;font-weight:700;color:var(--ink);font-size:16px;}
+.hero-demo .play{width:38px;height:38px;border-radius:50%;background:#fff;box-shadow:var(--shadow-sm);display:grid;place-items:center;color:var(--violet);}
+.hero-trust{display:flex;align-items:center;gap:14px;font-size:13.5px;color:var(--ink-3);font-weight:600;}
+.hero-trust .avs{display:flex;}
+.hero-trust .avs span{width:32px;height:32px;border-radius:50%;border:2.5px solid var(--bg);margin-left:-10px;background-size:cover;display:grid;place-items:center;color:#fff;font-size:12px;font-weight:800;}
+.hero-trust .stars{color:#FFB020;letter-spacing:1px;}
+
+/* ----- product mock: inbox ----- */
+.mock{position:relative;}
+.mock-app{background:#fff;border-radius:22px;box-shadow:var(--shadow-lg);border:1px solid var(--line-2);overflow:hidden;}
+.mock-bar{display:flex;align-items:center;gap:7px;padding:13px 18px;border-bottom:1px solid var(--line-2);}
+.mock-bar .d{width:11px;height:11px;border-radius:50%;}
+.mock-bar .ttl{margin-left:10px;font-size:13px;font-weight:700;color:var(--ink-3);}
+.mock-body{display:grid;grid-template-columns:1fr 1.25fr;min-height:340px;}
+.mock-list{border-right:1px solid var(--line-2);padding:8px;}
+.mock-list .lhead{display:flex;justify-content:space-between;align-items:center;padding:10px 12px 12px;}
+.mock-list .lhead b{font-size:16px;}
+.mock-list .lhead span{font-size:11px;font-family:var(--mono);color:var(--ink-3);}
+.mrow{display:flex;gap:11px;align-items:center;padding:11px 12px;border-radius:12px;cursor:default;}
+.mrow.sel{background:var(--violet-50);}
+.mrow .ic{width:38px;height:38px;border-radius:11px;color:#fff;font-weight:800;display:grid;place-items:center;font-size:14px;flex-shrink:0;position:relative;}
+.mrow .ic .ch{position:absolute;bottom:-3px;right:-3px;width:16px;height:16px;border-radius:50%;border:2px solid #fff;}
+.mrow .txt{min-width:0;flex:1;}
+.mrow .txt b{font-size:14px;display:block;}
+.mrow .txt i{font-size:13px;color:var(--ink-3);font-style:normal;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.mrow .meta{font-size:10px;color:var(--ink-3);font-family:var(--mono);}
+.mock-chat{padding:18px;display:flex;flex-direction:column;gap:12px;background:linear-gradient(180deg,#FCFBFE,#F7F4FD);}
+.bub{max-width:78%;padding:11px 15px;border-radius:16px;font-size:13.5px;line-height:1.45;}
+.bub.them{background:#fff;border:1px solid var(--line-2);align-self:flex-start;border-bottom-left-radius:5px;}
+.bub.me{background:var(--violet);color:#fff;align-self:flex-end;border-bottom-right-radius:5px;}
+.mock-chat .tag-auto{align-self:flex-start;font-family:var(--mono);font-size:10.5px;color:var(--violet);background:var(--violet-50);padding:5px 10px;border-radius:8px;font-weight:600;}
+.float{position:absolute;background:#fff;border-radius:14px;padding:12px 15px;box-shadow:var(--shadow);border:1px solid var(--line-2);display:flex;align-items:center;gap:11px;z-index:3;}
+.float .fi{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;flex-shrink:0;}
+.float b{font-size:14px;display:block;line-height:1.2;}
+.float span{font-size:11.5px;color:var(--ink-3);}
+.float.f1{top:-22px;left:-26px;}
+.float.f2{bottom:24px;right:-30px;}
+
+/* ----- big feature blocks ----- */
+.feat{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+.feat.rev .feat-media{order:-1;}
+.feat-copy h2{margin:16px 0 16px;}
+.feat-copy .lead{margin-bottom:24px;}
+.flist{display:flex;flex-direction:column;gap:14px;margin-top:8px;}
+.flist li{display:flex;gap:13px;align-items:flex-start;list-style:none;font-size:15.5px;color:var(--ink-2);font-weight:500;}
+.flist li .ck{width:24px;height:24px;border-radius:7px;background:var(--violet-50);color:var(--violet);display:grid;place-items:center;flex-shrink:0;font-weight:800;font-size:13px;margin-top:1px;}
+.feat-copy ul{padding:0;margin:0;}
+
+/* kanban mock */
+.kan{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;box-shadow:var(--shadow);display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.kcol{background:var(--bg-soft);border-radius:14px;padding:11px;}
+.kcol .kh{display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:700;margin-bottom:10px;color:var(--ink-2);}
+.kcol .kh .cnt{font-family:var(--mono);font-size:10px;background:#fff;padding:2px 7px;border-radius:6px;color:var(--ink-3);}
+.kcard{background:#fff;border:1px solid var(--line-2);border-radius:11px;padding:11px;margin-bottom:9px;box-shadow:0 2px 6px -4px rgba(60,30,120,.25);}
+.kcard .kt{font-size:12.5px;font-weight:700;margin-bottom:7px;}
+.kcard .kb{display:flex;justify-content:space-between;align-items:center;}
+.kcard .val{font-family:var(--mono);font-size:11px;color:var(--green);font-weight:600;}
+.kcard .av{width:22px;height:22px;border-radius:50%;background:var(--violet-300);color:#fff;font-size:10px;font-weight:800;display:grid;place-items:center;}
+.kdot{width:6px;height:6px;border-radius:50%;display:inline-block;margin-right:5px;}
+
+/* automation flow mock */
+.flow{background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px;box-shadow:var(--shadow);}
+.fnode{display:flex;align-items:center;gap:14px;background:var(--bg);border:1px solid var(--line);border-radius:13px;padding:14px 16px;position:relative;}
+.fnode .fn-ic{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;color:#fff;flex-shrink:0;}
+.fnode b{font-size:14.5px;display:block;}
+.fnode span{font-size:12.5px;color:var(--ink-3);}
+.fconn{width:2px;height:22px;background:var(--violet-300);margin:0 0 0 35px;position:relative;}
+.fconn::after{content:"";position:absolute;bottom:-1px;left:-4px;width:10px;height:10px;border-right:2px solid var(--violet-300);border-bottom:2px solid var(--violet-300);transform:rotate(45deg);}
+.fbranch{display:flex;gap:12px;margin-left:35px;}
+.fbranch .fnode{flex:1;}
+
+/* chat / groups mock */
+.groups{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);overflow:hidden;}
+.gtop{display:flex;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid var(--line-2);}
+.gtop .gav{width:40px;height:40px;border-radius:12px;background:linear-gradient(135deg,var(--violet),var(--blue));color:#fff;display:grid;place-items:center;font-weight:800;}
+.gtop b{font-size:15px;}
+.gtop span{font-size:12px;color:var(--green);font-weight:600;}
+.gmsgs{padding:18px;display:flex;flex-direction:column;gap:14px;}
+.gmsg{display:flex;gap:11px;}
+.gmsg .ga{width:30px;height:30px;border-radius:9px;color:#fff;font-size:11px;font-weight:800;display:grid;place-items:center;flex-shrink:0;}
+.gmsg .gc b{font-size:12.5px;}
+.gmsg .gc p{font-size:13.5px;color:var(--ink-2);background:var(--bg-soft);padding:9px 13px;border-radius:12px;border-top-left-radius:4px;margin-top:4px;}
+
+/* metrics */
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.metric{text-align:center;padding:14px;}
+.metric b{font-size:clamp(34px,4vw,50px);font-weight:800;letter-spacing:-.03em;display:block;background:linear-gradient(180deg,#fff,#D9C7FF);-webkit-background-clip:text;background-clip:text;color:transparent;}
+.metric span{font-size:14.5px;color:rgba(255,255,255,.7);}
+
+/* testimonials */
+.tcard{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:18px;}
+.tcard .stars{color:#FFB020;font-size:15px;letter-spacing:2px;}
+.tcard q{font-size:16.5px;line-height:1.6;color:var(--ink);font-weight:500;quotes:none;}
+.tcard .who{display:flex;align-items:center;gap:12px;margin-top:auto;}
+.tcard .who .av{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--violet),var(--blue));color:#fff;font-weight:800;display:grid;place-items:center;}
+.tcard .who b{font-size:14.5px;display:block;}
+.tcard .who span{font-size:13px;color:var(--ink-3);}
+
+@media(max-width:860px){
+  .hero-grid,.feat{grid-template-columns:1fr;gap:38px;}
+  .feat.rev .feat-media{order:0;}
+  .metrics{grid-template-columns:repeat(2,1fr);gap:30px 10px;}
+  .float.f1{left:-6px;} .float.f2{right:-6px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ============================ NAV ============================ -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="index.html"><img src="assets/vortice-logo.png" alt="Vórtice Tecnologia" class="nav-logo"></a>
+    <nav class="nav-links">
+      <a href="index.html" data-en="Home">Início</a>
+      <a href="crm.html" data-en="CRM">CRM</a>
+      <a href="automacoes.html" data-en="Automation">Automações</a>
+      <a href="integracoes.html" data-en="Integrations">Integrações</a>
+      <a href="sobre.html" data-en="Company">Sobre</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang-toggle">
+        <button data-lang="pt" class="on">PT</button>
+        <button data-lang="en">EN</button>
+      </div>
+      <div class="nav-cta">
+        <a href="https://vtec.vorticetecnologia.com.br/login" class="btn btn-ghost" data-en="Log in">Entrar</a>
+        <a href="contato.html" class="btn btn-primary" data-en="Start free">Começar grátis</a>
+      </div>
+      <button class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="nav-mobile">
+  <a href="index.html" data-en="Home">Início</a>
+  <a href="crm.html" data-en="CRM">CRM</a>
+  <a href="automacoes.html" data-en="Automation">Automações</a>
+  <a href="integracoes.html" data-en="Integrations">Integrações</a>
+  <a href="sobre.html" data-en="Company">Sobre</a>
+  <a href="contato.html" data-en="Contact">Contato</a>
+  <a href="contato.html" class="btn btn-primary" data-en="Start free">Começar grátis</a>
+</div>
+
+<!-- ============================ HERO ============================ -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <span class="pill"><span class="dot"></span><span data-en="Official omnichannel platform">Plataforma omnichannel oficial</span></span>
+      <h1 data-en-html="Every conversation in your company, in <span class='grad-text'>one place</span>.">Toda conversa da sua empresa em <span class="grad-text">um só lugar</span>.</h1>
+      <p class="lead" data-en="WhatsApp, Instagram and Messenger connected through the official APIs. CRM, pipeline, native automations and real-time reports for your whole team.">WhatsApp, Instagram e Messenger conectados à API oficial. CRM, pipeline, automações nativas e relatórios em tempo real para o time inteiro.</p>
+      <div class="hero-cta">
+        <a href="contato.html" class="btn btn-primary btn-lg" data-en="Start free">Começar grátis</a>
+        <a href="crm.html" class="hero-demo"><span class="play">▶</span><span data-en="See the platform">Ver a plataforma</span></a>
+      </div>
+      <div class="hero-trust">
+        <div class="avs">
+          <span style="background:linear-gradient(135deg,#25D366,#0f8a43)">N</span>
+          <span style="background:linear-gradient(135deg,#E1306C,#7232BD)">O</span>
+          <span style="background:linear-gradient(135deg,#1A6BF4,#16C0FF)">L</span>
+          <span style="background:linear-gradient(135deg,#4F00CB,#A47BFF)">S</span>
+        </div>
+        <div>
+          <div class="stars">★★★★★</div>
+          <span data-en="+800 teams already use Vórtice">+800 times já usam a Vórtice</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-media mock">
+      <div class="float f1">
+        <div class="fi" style="background:rgba(22,163,74,.12);color:var(--green)">↑</div>
+        <div><b data-en="+128 leads today">+128 leads hoje</b><span data-en="real-time pipeline">pipeline em tempo real</span></div>
+      </div>
+      <div class="float f2">
+        <div class="fi" style="background:var(--violet-50);color:var(--violet)">⚡</div>
+        <div><b data-en="Automation active">Automação ativa</b><span data-en="reply in 0.8s">resposta em 0,8s</span></div>
+      </div>
+      <div class="mock-app">
+        <div class="mock-bar">
+          <span class="d" style="background:#FF5F57"></span><span class="d" style="background:#FEBC2E"></span><span class="d" style="background:#28C840"></span>
+          <span class="ttl">app.vortice.com.br · Inbox</span>
+        </div>
+        <div class="mock-body">
+          <div class="mock-list">
+            <div class="lhead"><b data-en="Inbox">Caixa de entrada</b><span data-en="3 channels">3 canais</span></div>
+            <div class="mrow sel">
+              <div class="ic" style="background:#25D366">MA<span class="ch" style="background:#25D366"></span></div>
+              <div class="txt"><b>Marina Alves</b><i data-en="I'd like to know about the plans…">Queria saber sobre os planos…</i></div>
+              <span class="meta">2m</span>
+            </div>
+            <div class="mrow">
+              <div class="ic" style="background:linear-gradient(135deg,#F58529,#E1306C)">PL<span class="ch" style="background:#E1306C"></span></div>
+              <div class="txt"><b>@pedro.lima</b><i data-en="Do you integrate with my system?">Vocês integram com meu sistema?</i></div>
+              <span class="meta">5m</span>
+            </div>
+            <div class="mrow">
+              <div class="ic" style="background:#1A6BF4">JC<span class="ch" style="background:#1A6BF4"></span></div>
+              <div class="txt"><b>Júlia Costa</b><i data-en="Perfect, done! 🎉">Perfeito, fechado! 🎉</i></div>
+              <span class="meta">12m</span>
+            </div>
+            <div class="mrow">
+              <div class="ic" style="background:#25D366">RT<span class="ch" style="background:#25D366"></span></div>
+              <div class="txt"><b>Rafael T.</b><i data-en="Can you send the proposal?">Consegue mandar a proposta?</i></div>
+              <span class="meta">18m</span>
+            </div>
+          </div>
+          <div class="mock-chat">
+            <span class="tag-auto" data-en="⚡ Auto-reply · business hours">⚡ Resposta automática · horário comercial</span>
+            <div class="bub them" data-en="Hi! I'd like to know about the plans 😊">Oi! Queria saber sobre os planos 😊</div>
+            <div class="bub me" data-en="Hi Marina! Of course — which channels does your team use today?">Oi, Marina! Claro — quais canais seu time usa hoje?</div>
+            <div class="bub them" data-en="WhatsApp and Instagram, mostly.">WhatsApp e Instagram, principalmente.</div>
+            <div class="bub me" data-en="Perfect. Both connect through the official API in minutes ⚡">Perfeito. Os dois conectam pela API oficial em minutos ⚡</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ TRUSTED BY ============================ -->
+<section class="section-sm">
+  <div class="container">
+    <p class="eyebrow" style="text-align:center;margin-bottom:26px" data-en="Trusted by growing teams across Brazil">Confiança de times que crescem em todo o Brasil</p>
+    <div class="logos-row">
+      <span class="lg">Nexa</span><span class="lg">Órbita</span><span class="lg">Lumen</span><span class="lg">Sól</span><span class="lg">Vetor</span><span class="lg">Pulse</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ OMNICHANNEL ============================ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker" data-en="One inbox, every channel">Uma caixa, todos os canais</span>
+      <h2 class="h-lg" data-en-html="Connect the official channels<br>and never lose a message">Conecte os canais oficiais<br>e nunca mais perca uma mensagem</h2>
+      <p class="lead" data-en="Native integration with Meta's official APIs. No unofficial gateways, no ban risk — just stability and full history.">Integração nativa com as APIs oficiais da Meta. Sem gateways não oficiais, sem risco de banimento — só estabilidade e histórico completo.</p>
+    </div>
+    <div class="grid g-3 reveal">
+      <div class="fcard">
+        <div class="chan wa" style="margin-bottom:20px"><svg viewBox="0 0 24 24" fill="#fff" width="24" height="24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.5 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9 0 .1.1.3 0 .5-.3.6-.6.8-.8 1-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.7.8.2.1.4.2.5.3 0 .1 0 .6-.2 1.2Z"/></svg></div>
+        <h3>WhatsApp Business API</h3>
+        <p data-en="Official API with green seal, templates, multiple agents on one number and verified profile.">API oficial com selo verde, templates, múltiplos atendentes no mesmo número e perfil verificado.</p>
+      </div>
+      <div class="fcard">
+        <div class="chan ig" style="margin-bottom:20px"><svg viewBox="0 0 24 24" fill="#fff" width="24" height="24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.1.4.3 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.1-1 .3-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.1-.4-.3-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.1 1-.3 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 3.2A6.6 6.6 0 1 0 18.6 12 6.6 6.6 0 0 0 12 5.4Zm0 10.9A4.3 4.3 0 1 1 16.3 12 4.3 4.3 0 0 1 12 16.3Zm6.8-11.2a1.5 1.5 0 1 1-1.5-1.5 1.5 1.5 0 0 1 1.5 1.5Z"/></svg></div>
+        <h3>Instagram Direct</h3>
+        <p data-en="DMs, story replies and comments turned into tickets — with full context and history.">DMs, respostas de stories e comentários viram atendimentos — com contexto e histórico completos.</p>
+      </div>
+      <div class="fcard">
+        <div class="chan ms" style="margin-bottom:20px"><svg viewBox="0 0 24 24" fill="#fff" width="24" height="24"><path d="M12 2C6.3 2 2 6.2 2 11.8c0 2.9 1.2 5.4 3.1 7.2.2.1.3.4.3.6l.1 1.7c0 .5.6.9 1.1.7l1.9-.8c.2-.1.4-.1.6 0 .9.3 1.9.4 2.8.4 5.7 0 10-4.2 10-9.8C22 6.2 17.7 2 12 2Zm6 7.5-2.9 4.7c-.5.7-1.5.9-2.2.4l-2.3-1.7c-.2-.2-.5-.2-.7 0L7 15.3c-.4.3-.9-.2-.6-.6l2.9-4.7c.5-.7 1.5-.9 2.2-.4l2.3 1.7c.2.2.5.2.7 0L17 8.6c.4-.3.9.2.6.6Z"/></svg></div>
+        <h3>Facebook Messenger</h3>
+        <p data-en="Unify your page conversations in the same inbox, with smart routing to the right agent.">Unifique as conversas da sua página na mesma caixa, com roteamento inteligente para o atendente certo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FEATURE: PIPELINE ============================ -->
+<section class="section bg-soft">
+  <div class="container">
+    <div class="feat reveal">
+      <div class="feat-copy">
+        <span class="kicker" data-en="CRM & Pipeline">CRM & Pipeline</span>
+        <h2 class="h-md" data-en="From first message to closed deal, with full visibility">Da primeira mensagem ao fechamento, com visibilidade total</h2>
+        <p class="lead" data-en="Every conversation becomes an opportunity in a visual pipeline. Drag cards between stages, set values, owners and follow-ups — and watch the funnel move in real time.">Cada conversa vira uma oportunidade num pipeline visual. Arraste cards entre etapas, defina valores, responsáveis e follow-ups — e veja o funil andar em tempo real.</p>
+        <ul class="flist">
+          <li><span class="ck">✓</span><span data-en="Kanban pipeline with custom stages">Pipeline kanban com etapas personalizáveis</span></li>
+          <li><span class="ck">✓</span><span data-en="Full contact history across all channels">Histórico completo do contato em todos os canais</span></li>
+          <li><span class="ck">✓</span><span data-en="Tags, custom fields and smart filters">Tags, campos personalizados e filtros inteligentes</span></li>
+        </ul>
+        <a href="crm.html" class="btn-link" style="margin-top:26px"><span data-en="Explore the CRM">Explorar o CRM</span> <span class="arr">→</span></a>
+      </div>
+      <div class="feat-media">
+        <div class="kan reveal">
+          <div class="kcol">
+            <div class="kh"><span><span class="kdot" style="background:#1A6BF4"></span><span data-en="New">Novo</span></span><span class="cnt">8</span></div>
+            <div class="kcard"><div class="kt">Marina Alves</div><div class="kb"><span class="val">R$ 2.400</span><span class="av">MA</span></div></div>
+            <div class="kcard"><div class="kt">@pedro.lima</div><div class="kb"><span class="val">R$ 980</span><span class="av">PL</span></div></div>
+          </div>
+          <div class="kcol">
+            <div class="kh"><span><span class="kdot" style="background:#F59E0B"></span><span data-en="In progress">Em negociação</span></span><span class="cnt">5</span></div>
+            <div class="kcard"><div class="kt">Rafael Torres</div><div class="kb"><span class="val">R$ 7.200</span><span class="av">RT</span></div></div>
+            <div class="kcard"><div class="kt">Clínica Sól</div><div class="kb"><span class="val">R$ 12.5k</span><span class="av">CS</span></div></div>
+          </div>
+          <div class="kcol">
+            <div class="kh"><span><span class="kdot" style="background:#16A34A"></span><span data-en="Won">Ganho</span></span><span class="cnt">11</span></div>
+            <div class="kcard"><div class="kt">Júlia Costa</div><div class="kb"><span class="val">R$ 4.900</span><span class="av">JC</span></div></div>
+            <div class="kcard"><div class="kt">Loja Vetor</div><div class="kb"><span class="val">R$ 3.300</span><span class="av">LV</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FEATURE: AUTOMATION ============================ -->
+<section class="section">
+  <div class="container">
+    <div class="feat rev reveal">
+      <div class="feat-copy">
+        <span class="kicker" data-en="Native automation + Typebot">Automações nativas + Typebot</span>
+        <h2 class="h-md" data-en="Robots that qualify, route and reply — 24/7">Robôs que qualificam, distribuem e respondem — 24/7</h2>
+        <p class="lead" data-en="Build flows with no code: greet, qualify the lead, answer FAQs and hand off to the right agent. Connect Typebot for richer conversational experiences.">Monte fluxos sem código: dê boas-vindas, qualifique o lead, responda dúvidas frequentes e passe para o atendente certo. Conecte o Typebot para experiências conversacionais mais ricas.</p>
+        <ul class="flist">
+          <li><span class="ck">✓</span><span data-en="Visual flow builder, no developer needed">Construtor de fluxo visual, sem precisar de dev</span></li>
+          <li><span class="ck">✓</span><span data-en="Triggers by keyword, schedule or channel">Gatilhos por palavra-chave, horário ou canal</span></li>
+          <li><span class="ck">✓</span><span data-en="Native Typebot integration">Integração nativa com Typebot</span></li>
+        </ul>
+        <a href="automacoes.html" class="btn-link" style="margin-top:26px"><span data-en="See automations">Ver automações</span> <span class="arr">→</span></a>
+      </div>
+      <div class="feat-media">
+        <div class="flow reveal">
+          <div class="fnode"><div class="fn-ic" style="background:#25D366">▶</div><div><b data-en="New message received">Nova mensagem recebida</b><span data-en="trigger · any channel">gatilho · qualquer canal</span></div></div>
+          <div class="fconn"></div>
+          <div class="fnode"><div class="fn-ic" style="background:var(--violet)">⚡</div><div><b data-en="Greeting + qualification">Boas-vindas + qualificação</b><span data-en="Typebot flow">fluxo Typebot</span></div></div>
+          <div class="fconn"></div>
+          <div class="fbranch">
+            <div class="fnode"><div class="fn-ic" style="background:#1A6BF4">→</div><div><b data-en="Sales">Vendas</b><span data-en="route to team">distribui ao time</span></div></div>
+            <div class="fnode"><div class="fn-ic" style="background:#F59E0B">→</div><div><b data-en="Support">Suporte</b><span data-en="open ticket">abre ticket</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FEATURE: INTERNAL CHAT / GROUPS ============================ -->
+<section class="section bg-soft">
+  <div class="container">
+    <div class="feat reveal">
+      <div class="feat-copy">
+        <span class="kicker" data-en="Internal chat & groups">Chat interno & grupos</span>
+        <h2 class="h-md" data-en="Your team talks here — drop the extra tools">Seu time conversa aqui — esqueça as ferramentas extras</h2>
+        <p class="lead" data-en="Internal chat and groups built in. Discuss a customer right next to the conversation, create channels by team or project, and replace Teams or Slack without leaving Vórtice.">Chat interno e grupos integrados. Discuta um cliente ao lado da própria conversa, crie canais por equipe ou projeto e substitua o Teams ou Slack sem sair da Vórtice.</p>
+        <ul class="flist">
+          <li><span class="ck">✓</span><span data-en="Create groups by team, project or shift">Crie grupos por equipe, projeto ou turno</span></li>
+          <li><span class="ck">✓</span><span data-en="Mention a colleague inside a customer ticket">Mencione um colega dentro do atendimento</span></li>
+          <li><span class="ck">✓</span><span data-en="One tool for customers and team — less context-switching">Uma ferramenta para clientes e time — menos troca de contexto</span></li>
+        </ul>
+        <a href="crm.html" class="btn-link" style="margin-top:26px"><span data-en="Learn more">Saiba mais</span> <span class="arr">→</span></a>
+      </div>
+      <div class="feat-media">
+        <div class="groups reveal">
+          <div class="gtop"><div class="gav">#</div><div><b data-en="# sales-team">#time-vendas</b><span data-en="6 online">6 online</span></div></div>
+          <div class="gmsgs">
+            <div class="gmsg"><div class="ga" style="background:#1A6BF4">AL</div><div class="gc"><b>Ana Lima</b><p data-en="Marina is ready to close — can someone send the contract?">A Marina tá pronta pra fechar — alguém manda o contrato?</p></div></div>
+            <div class="gmsg"><div class="ga" style="background:#16A34A">BR</div><div class="gc"><b>Bruno R.</b><p data-en="On it 👍 sending now via WhatsApp">Pode deixar 👍 mandando agora pelo WhatsApp</p></div></div>
+            <div class="gmsg"><div class="ga" style="background:#E1306C">CM</div><div class="gc"><b>Carla M.</b><p data-en="Nice! That's the 3rd deal today 🚀">Boa! Esse é o 3º fechamento hoje 🚀</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ METRICS BAND ============================ -->
+<section class="section">
+  <div class="container">
+    <div class="cta-band" style="padding:56px 48px">
+      <span class="eyebrow" style="color:rgba(255,255,255,.7)" data-en="The numbers behind the operation">Os números por trás da operação</span>
+      <div class="metrics" style="margin-top:32px">
+        <div class="metric"><b>+2,4M</b><span data-en="messages handled / month">mensagens tratadas / mês</span></div>
+        <div class="metric"><b>98%</b><span data-en="resolved on first contact">resolvidas no 1º contato</span></div>
+        <div class="metric"><b>3×</b><span data-en="more conversions">mais conversões</span></div>
+        <div class="metric"><b>1m12s</b><span data-en="avg. response time">tempo médio de resposta</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ INTEGRATIONS TEASER ============================ -->
+<section class="section bg-soft">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker" data-en="Integrations">Integrações</span>
+      <h2 class="h-lg" data-en="Connected to the tools you already use">Conectada às ferramentas que você já usa</h2>
+      <p class="lead" data-en="Plug Vórtice into your stack — official APIs, Typebot, CRMs, e-commerce and more.">Pluga a Vórtice ao seu stack — APIs oficiais, Typebot, CRMs, e-commerce e mais.</p>
+    </div>
+    <div class="grid g-4 reveal">
+      <div class="fcard" style="text-align:center;padding:26px"><div class="chan wa" style="margin:0 auto 14px">W</div><h3 style="font-size:16px">WhatsApp API</h3></div>
+      <div class="fcard" style="text-align:center;padding:26px"><div class="chan ig" style="margin:0 auto 14px">I</div><h3 style="font-size:16px">Instagram</h3></div>
+      <div class="fcard" style="text-align:center;padding:26px"><div class="chan ms" style="margin:0 auto 14px">M</div><h3 style="font-size:16px">Messenger</h3></div>
+      <div class="fcard" style="text-align:center;padding:26px"><div class="chan" style="margin:0 auto 14px;background:linear-gradient(135deg,#0042DA,#00C2FF)">T</div><h3 style="font-size:16px">Typebot</h3></div>
+    </div>
+    <div style="text-align:center;margin-top:34px" class="reveal"><a href="integracoes.html" class="btn btn-soft btn-lg"><span data-en="See all integrations">Ver todas as integrações</span></a></div>
+  </div>
+</section>
+
+<!-- ============================ TESTIMONIALS ============================ -->
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker" data-en="Customers">Clientes</span>
+      <h2 class="h-lg" data-en="Teams that turned chaos into process">Times que viraram o caos em processo</h2>
+    </div>
+    <div class="grid g-3 reveal">
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <q data-en="“We unified three channels into one inbox. Response time dropped from hours to minutes and nothing slips through anymore.”">“Unificamos três canais numa caixa só. O tempo de resposta caiu de horas para minutos e nada mais escapa.”</q>
+        <div class="who"><div class="av">RM</div><div><b>Renata Moraes</b><span data-en="Head of Customer · Nexa">Head de Atendimento · Nexa</span></div></div>
+      </div>
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <q data-en="“The pipeline gave us visibility we never had. We can finally see where deals get stuck and act on it.”">“O pipeline nos deu uma visibilidade que nunca tivemos. Enfim dá pra ver onde a venda trava e agir.”</q>
+        <div class="who"><div class="av">FG</div><div><b>Felipe Gomes</b><span data-en="Sales Lead · Órbita">Líder de Vendas · Órbita</span></div></div>
+      </div>
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <q data-en="“Native automation plus Typebot handles 60% of first contacts. The team focuses on what really matters.”">“Automação nativa com Typebot resolve 60% dos primeiros contatos. O time foca no que importa.”</q>
+        <div class="who"><div class="av">CT</div><div><b>Camila Tavares</b><span data-en="COO · Lumen">COO · Lumen</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="section bg-soft">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">FAQ</span>
+      <h2 class="h-lg" data-en="Frequently asked questions">Perguntas frequentes</h2>
+    </div>
+    <div class="faq reveal">
+      <div class="faq-item"><button class="faq-q"><span data-en="Is it the official WhatsApp API?">É a API oficial do WhatsApp?</span><span class="chev">+</span></button><div class="faq-a"><p data-en="Yes. Vórtice connects through the official WhatsApp Business API, plus Instagram Direct and Facebook Messenger — no unofficial gateways and no ban risk.">Sim. A Vórtice conecta pela WhatsApp Business API oficial, além de Instagram Direct e Facebook Messenger — sem gateways não oficiais e sem risco de banimento.</p></div></div>
+      <div class="faq-item"><button class="faq-q"><span data-en="Do I need a developer to set it up?">Preciso de um desenvolvedor para configurar?</span><span class="chev">+</span></button><div class="faq-a"><p data-en="No. Onboarding is guided and automations are built with a visual no-code editor. Our team helps connect your channels.">Não. O onboarding é guiado e as automações são montadas em um editor visual no-code. Nosso time ajuda a conectar seus canais.</p></div></div>
+      <div class="faq-item"><button class="faq-q"><span data-en="Can the whole team use the same number?">O time todo pode usar o mesmo número?</span><span class="chev">+</span></button><div class="faq-a"><p data-en="Yes. Multiple agents work the same WhatsApp number simultaneously, with smart routing, internal notes and full history.">Sim. Vários atendentes trabalham no mesmo número de WhatsApp ao mesmo tempo, com roteamento inteligente, notas internas e histórico completo.</p></div></div>
+      <div class="faq-item"><button class="faq-q"><span data-en="Does it replace tools like Teams or Slack?">Substitui ferramentas como Teams ou Slack?</span><span class="chev">+</span></button><div class="faq-a"><p data-en="For team communication around customer service, yes. The built-in internal chat and groups let your team talk right beside the customer conversations.">Para a comunicação do time em torno do atendimento, sim. O chat interno e os grupos permitem que a equipe converse ao lado das conversas com clientes.</p></div></div>
+      <div class="faq-item"><button class="faq-q"><span data-en="Is there a free trial?">Existe teste gratuito?</span><span class="chev">+</span></button><div class="faq-a"><p data-en="Yes — you can start free and talk to our team to find the right plan for your operation's size.">Sim — você pode começar grátis e falar com nosso time para encontrar o plano certo para o tamanho da sua operação.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FINAL CTA ============================ -->
+<section class="section">
+  <div class="container">
+    <div class="cta-band reveal">
+      <h2 data-en-html="Bring every conversation<br>into the Vórtice">Traga toda conversa<br>para dentro da Vórtice</h2>
+      <p data-en="Start free today. Connect your channels in minutes and feel the difference in the first week.">Comece grátis hoje. Conecte seus canais em minutos e sinta a diferença já na primeira semana.</p>
+      <div class="btn-row">
+        <a href="contato.html" class="btn btn-lg" style="background:#fff;color:var(--violet)"><span data-en="Start free">Começar grátis</span></a>
+        <a href="contato.html" class="btn btn-lg" style="background:rgba(255,255,255,.12);color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.3)"><span data-en="Talk to sales">Falar com vendas</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/vortice-logo-white.png" alt="Vórtice Tecnologia">
+        <p data-en="The omnichannel platform that brings WhatsApp, Instagram and Messenger together with CRM, automation and real-time reports.">A plataforma omnichannel que reúne WhatsApp, Instagram e Messenger com CRM, automações e relatórios em tempo real.</p>
+        <div class="footer-soc">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.1.4.3 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.1-1 .3-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.1-.4-.3-1-.4-2.2-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.1 1-.3 2.2-.4 1.3-.1 1.7-.1 4.9-.1Zm0 3.2A6.6 6.6 0 1 0 18.6 12 6.6 6.6 0 0 0 12 5.4Zm0 10.9A4.3 4.3 0 1 1 16.3 12 4.3 4.3 0 0 1 12 16.3Zm6.8-11.2a1.5 1.5 0 1 1-1.5-1.5 1.5 1.5 0 0 1 1.5 1.5Z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM.25 8.25h4.5V24h-4.5V8.25Zm7.5 0h4.3v2.15h.06c.6-1.13 2.06-2.32 4.24-2.32 4.54 0 5.38 2.99 5.38 6.87V24h-4.5v-7.2c0-1.72-.03-3.93-2.4-3.93-2.4 0-2.77 1.87-2.77 3.8V24h-4.5V8.25Z"/></svg></a>
+          <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1 0 12 2Zm5.5 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9 0 .1.1.3 0 .5-.3.6-.6.8-.8 1-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.2.1.4.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.7.8.2.1.4.2.5.3 0 .1 0 .6-.2 1.2Z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4 data-en="Product">Produto</h4>
+        <a href="crm.html" data-en="CRM & Pipeline">CRM & Pipeline</a>
+        <a href="automacoes.html" data-en="Automation">Automações</a>
+        <a href="integracoes.html" data-en="Integrations">Integrações</a>
+        <a href="crm.html" data-en="Internal chat">Chat interno</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-en="Company">Empresa</h4>
+        <a href="sobre.html" data-en="About">Sobre</a>
+        <a href="contato.html" data-en="Contact">Contato</a>
+        <a href="contato.html" data-en="Careers">Carreiras</a>
+        <a href="sobre.html" data-en="Blog">Blog</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-en="Legal">Legal</h4>
+        <a href="#" data-en="Privacy">Privacidade</a>
+        <a href="#" data-en="Terms">Termos</a>
+        <a href="#" data-en="LGPD">LGPD</a>
+        <a href="#" data-en="Status">Status</a>
+      </div>
+    </div>
+    <div class="footer-bot">
+      <span>© 2026 Vórtice Tecnologia. <span data-en="All rights reserved.">Todos os direitos reservados.</span></span>
+      <span class="badge"><span class="dot" style="width:8px;height:8px;border-radius:50%;background:#25D366;display:inline-block"></span><span data-en="Official Meta Business Partner">Parceiro oficial Meta Business</span></span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+</body>
+</html>
