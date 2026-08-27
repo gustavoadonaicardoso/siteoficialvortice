@@ -7,10 +7,10 @@
 
   /* ---- Active nav link by current page ---- */
   (function(){
-    var file = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
-    if(file==='') file='index.html';
+    var file = (location.pathname.split('/').pop() || '').toLowerCase().replace(/\.html$/, '');
     document.querySelectorAll('.nav-links a, .nav-mobile a').forEach(function(a){
-      var href=(a.getAttribute('href')||'').toLowerCase();
+      var href=(a.getAttribute('href')||'').toLowerCase().replace(/^\.\//, '').replace(/\.html$/, '');
+      if(href==='/') href='';
       if(href===file) a.classList.add('active');
     });
   })();
