@@ -44,6 +44,25 @@
     });
   });
 
+  /* ---- Commercial CTAs: open WhatsApp with a message for each intent ---- */
+  (function(){
+    var phone = '551194579989';
+    var messages = {
+      'Start free': 'Olá! Quero ativar meu teste grátis da Vórtice. Podem me ajudar?',
+      'Talk to sales': 'Olá! Gostaria de falar com o time de vendas da Vórtice para entender qual solução atende melhor a minha operação.',
+      'Book a demo': 'Olá! Gostaria de agendar uma demonstração da plataforma Vórtice.'
+    };
+
+    document.querySelectorAll('a').forEach(function(link){
+      var translatedChild = link.querySelector('[data-en]');
+      var intent = link.getAttribute('data-en') || (translatedChild && translatedChild.getAttribute('data-en'));
+      if(!messages[intent]) return;
+      link.href = 'https://wa.me/' + phone + '?text=' + encodeURIComponent(messages[intent]);
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+    });
+  })();
+
   /* ---- Scroll reveal ---- */
   var reveals = document.querySelectorAll('.reveal');
   var io = new IntersectionObserver(function(entries){

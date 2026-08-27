@@ -87,21 +87,21 @@
           <h3 data-en="Request a demo">Solicite uma demonstração</h3>
           <p class="sub" data-en="We reply within one business day.">Respondemos em até um dia útil.</p>
           <div class="row2">
-            <div class="field"><label data-en="Full name">Nome completo</label><input type="text" required data-en-ph="Your name" placeholder="Seu nome"></div>
-            <div class="field"><label data-en="Work email">E-mail corporativo</label><input type="email" required data-en-ph="you@company.com" placeholder="voce@empresa.com"></div>
+            <div class="field"><label data-en="Full name">Nome completo</label><input type="text" name="nome" required data-en-ph="Your name" placeholder="Seu nome"></div>
+            <div class="field"><label data-en="Work email">E-mail corporativo</label><input type="email" name="email" required data-en-ph="you@company.com" placeholder="voce@empresa.com"></div>
           </div>
           <div class="row2">
-            <div class="field"><label data-en="Company">Empresa</label><input type="text" data-en-ph="Company name" placeholder="Nome da empresa"></div>
-            <div class="field"><label data-en="Team size">Tamanho do time</label><select><option data-en="1–5 agents">1–5 atendentes</option><option data-en="6–20 agents">6–20 atendentes</option><option data-en="21–50 agents">21–50 atendentes</option><option data-en="50+ agents">50+ atendentes</option></select></div>
+            <div class="field"><label data-en="Company">Empresa</label><input type="text" name="empresa" data-en-ph="Company name" placeholder="Nome da empresa"></div>
+            <div class="field"><label data-en="Team size">Tamanho do time</label><select name="tamanho"><option data-en="1–5 agents">1–5 atendentes</option><option data-en="6–20 agents">6–20 atendentes</option><option data-en="21–50 agents">21–50 atendentes</option><option data-en="50+ agents">50+ atendentes</option></select></div>
           </div>
-          <div class="field"><label data-en="Channels you use">Canais que você usa</label><select><option>WhatsApp</option><option>WhatsApp + Instagram</option><option data-en="WhatsApp + Instagram + Messenger">WhatsApp + Instagram + Messenger</option><option data-en="Other">Outro</option></select></div>
-          <div class="field"><label data-en="How can we help?">Como podemos ajudar?</label><textarea data-en-ph="Tell us about your operation…" placeholder="Conte sobre sua operação…"></textarea></div>
+          <div class="field"><label data-en="Channels you use">Canais que você usa</label><select name="canais"><option>WhatsApp</option><option>WhatsApp + Instagram</option><option data-en="WhatsApp + Instagram + Messenger">WhatsApp + Instagram + Messenger</option><option data-en="Other">Outro</option></select></div>
+          <div class="field"><label data-en="How can we help?">Como podemos ajudar?</label><textarea name="mensagem" data-en-ph="Tell us about your operation…" placeholder="Conte sobre sua operação…"></textarea></div>
           <button type="submit" class="btn btn-primary btn-lg" style="width:100%" data-en="Send request">Enviar solicitação</button>
         </form>
         <div class="ok" id="formOk">
           <div class="ico">✓</div>
-          <h3 data-en="Request sent!">Solicitação enviada!</h3>
-          <p class="sub" data-en="Our team will reach out within one business day. Talk soon ⚡">Nosso time entra em contato em até um dia útil. Até já ⚡</p>
+          <h3 data-en="Message prepared!">Mensagem preparada!</h3>
+          <p class="sub" data-en="WhatsApp has opened with your answers. Just review and send the message.">O WhatsApp foi aberto com suas respostas. Agora é só revisar e enviar a mensagem.</p>
         </div>
       </div>
       <div class="cinfo reveal">
@@ -122,7 +122,25 @@
 <script>
 (function(){
   var f=document.getElementById('contactForm');
-  if(f){f.addEventListener('submit',function(e){e.preventDefault();f.style.display='none';document.getElementById('formOk').style.display='block';});}
+  if(!f) return;
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var dados=new FormData(f);
+    var naoInformado='Não informado';
+    var texto=[
+      'Olá! Tenho interesse em conhecer a Vórtice.',
+      '',
+      '*Nome:* '+(dados.get('nome')||naoInformado),
+      '*E-mail:* '+(dados.get('email')||naoInformado),
+      '*Empresa:* '+(dados.get('empresa')||naoInformado),
+      '*Tamanho do time:* '+(dados.get('tamanho')||naoInformado),
+      '*Canais utilizados:* '+(dados.get('canais')||naoInformado),
+      '*Como podemos ajudar:* '+(dados.get('mensagem')||naoInformado)
+    ].join('\n');
+    window.open('https://wa.me/551194579989?text='+encodeURIComponent(texto),'_blank','noopener');
+    f.style.display='none';
+    document.getElementById('formOk').style.display='block';
+  });
 })();
 </script>
 
