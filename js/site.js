@@ -46,7 +46,7 @@
 
   /* ---- Commercial CTAs: open WhatsApp with a message for each intent ---- */
   (function(){
-    var phone = '551194579989';
+    var phone = '5511945479989';
     var messages = {
       'Start free': 'Olá! Quero ativar meu teste grátis da Vórtice. Podem me ajudar?',
       'Talk to sales': 'Olá! Gostaria de falar com o time de vendas da Vórtice para entender qual solução atende melhor a minha operação.',
