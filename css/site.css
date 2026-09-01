@@ -50,6 +50,7 @@ body{
 a{color:inherit;text-decoration:none;}
 img{max-width:100%;display:block;}
 h1,h2,h3,h4{margin:0;letter-spacing:-.025em;line-height:1.08;font-weight:800;}
+h1,h2,h3,h4{font-family:'Space Grotesk',var(--font);}
 p{margin:0;}
 .container{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
 
@@ -353,4 +354,110 @@ html.js .reveal.in{opacity:1;transform:none;}
   .faq-q{font-size:14.5px;padding:16px 4px;}
   /* nav padding tighter */
   .nav-inner{padding:12px 16px;gap:16px;}
+}
+
+/* ===================================================================
+   TECH REFINEMENT — contraste alto, precisão e linguagem de produto
+   =================================================================== */
+:root{
+  --violet:#6840F2;
+  --violet-700:#5530D7;
+  --violet-600:#7954FF;
+  --violet-500:#8D70FF;
+  --violet-300:#B9A8FF;
+  --violet-100:#EAE5FF;
+  --violet-50:#F4F1FF;
+  --blue:#24B8F4;
+  --blue-100:#E2F6FF;
+  --green:#22C77A;
+  --ink:#0F172A;
+  --ink-2:#465269;
+  --ink-3:#77839A;
+  --line:#D9E2EE;
+  --line-2:#EAF0F7;
+  --bg:#F7F9FC;
+  --bg-soft:#EEF3F9;
+  --radius:12px;
+  --radius-lg:18px;
+  --radius-sm:8px;
+  --shadow-sm:0 7px 20px -11px rgba(12,29,61,.28);
+  --shadow:0 24px 54px -30px rgba(12,29,61,.42);
+  --shadow-lg:0 38px 84px -34px rgba(6,19,46,.56);
+}
+body{background:var(--bg);}
+.nav{background:rgba(247,249,252,.86);}
+.nav.scrolled{box-shadow:0 8px 24px -18px rgba(8,22,48,.55);}
+.btn-primary{background:linear-gradient(135deg,var(--violet),#356EEB);box-shadow:0 12px 28px -12px rgba(72,58,218,.72);}
+.btn-primary:hover{background:linear-gradient(135deg,var(--violet-600),#2C9EEA);box-shadow:0 16px 32px -12px rgba(72,58,218,.78);}
+.btn-ghost{background:rgba(255,255,255,.76);}
+.fcard{border-radius:14px;}
+.fcard:hover{border-color:#A89AFF;box-shadow:0 22px 44px -28px rgba(55,67,131,.56);}
+.section.bg-soft{background:linear-gradient(180deg,#EEF3F9 0%,#F4F7FB 100%);}
+.page-hero{background:linear-gradient(150deg,#07101F 0%,#0E1D38 70%,#111637 100%);color:#fff;}
+.page-hero::before{background:
+  linear-gradient(rgba(150,173,255,.055) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(150,173,255,.055) 1px,transparent 1px),
+  radial-gradient(55% 90% at 76% 0%,rgba(104,64,242,.34),transparent 68%),
+  radial-gradient(42% 70% at 14% 0%,rgba(36,184,244,.12),transparent 72%);
+  background-size:52px 52px,52px 52px,auto,auto;}
+.page-hero .breadcrumb{color:rgba(232,240,255,.56);}
+.page-hero .breadcrumb a:hover{color:#fff;}
+.page-hero .kicker{color:#A99CFF;}
+.page-hero .lead{color:rgba(232,240,255,.76);}
+.cta-band{border-radius:20px;background:
+  linear-gradient(rgba(153,178,255,.045) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(153,178,255,.045) 1px,transparent 1px),
+  radial-gradient(120% 160% at 85% -30%,#334EAA 0%,#182650 44%,#091323 100%);
+  background-size:48px 48px,48px 48px,auto;box-shadow:0 30px 70px -42px rgba(12,29,61,.75);}
+.footer{background:#07101F;}
+.faq-item{border-bottom-color:var(--line);}
+
+/* ===================================================================
+   MOTION SYSTEM — sinais, camadas e movimento ambiental
+   =================================================================== */
+@keyframes tech-grid-drift{
+  from{background-position:0 0,0 0,92% 4%,0 40%;}
+  to{background-position:56px 56px,-56px 56px,84% 10%,5% 34%;}
+}
+@keyframes tech-grid-breathe{
+  0%,100%{background-position:0 0,0 0,85% -30%;opacity:.94;}
+  50%{background-position:48px 48px,-48px 48px,78% -23%;opacity:1;}
+}
+@keyframes tech-orbit{
+  from{transform:translateY(-50%) rotate(0deg);}
+  to{transform:translateY(-50%) rotate(360deg);}
+}
+@keyframes tech-signal-pulse{
+  0%,100%{opacity:1;box-shadow:0 0 0 3px rgba(34,199,122,.17),0 0 0 0 rgba(34,199,122,0);}
+  50%{opacity:.76;box-shadow:0 0 0 3px rgba(34,199,122,.17),0 0 0 8px rgba(34,199,122,0);}
+}
+@keyframes tech-scan{
+  0%,100%{transform:scaleX(.35);opacity:.32;}
+  50%{transform:scaleX(1);opacity:1;}
+}
+@keyframes tech-float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-8px);}
+}
+.hero::before{animation:tech-grid-drift 22s linear infinite;}
+.hero::after{animation:tech-orbit 30s linear infinite;}
+.hero-grid::before{content:"";position:absolute;width:430px;height:430px;right:-6%;top:50%;border:1px solid rgba(139,112,255,.18);border-right-color:rgba(36,184,244,.54);border-top-color:rgba(185,168,255,.4);border-radius:50%;box-shadow:0 0 0 24px rgba(118,101,232,.035),0 0 0 72px rgba(75,187,242,.025);pointer-events:none;animation:tech-orbit 34s linear infinite;}
+.hero-grid::after{content:"";position:absolute;width:7px;height:7px;right:calc(-6% + 212px);top:50%;border-radius:50%;background:#55D8FF;box-shadow:0 0 16px 4px rgba(85,216,255,.4),0 -212px 0 0 #B8A8FF,0 212px 0 0 rgba(104,64,242,.9);pointer-events:none;animation:tech-orbit 18s linear infinite reverse;}
+.hero-copy{position:relative;z-index:1;}
+.hero-copy::before{content:"";position:absolute;left:0;top:-34px;width:96px;height:1px;background:linear-gradient(90deg,#55D8FF,rgba(85,216,255,0));transform-origin:left center;animation:tech-scan 3.8s ease-in-out infinite;}
+.hero .pill .dot{animation:tech-signal-pulse 2.4s ease-in-out infinite;}
+.hero-demo .play{animation:tech-float 3.6s ease-in-out infinite;}
+.kicker::before{animation:tech-signal-pulse 3.2s ease-in-out infinite;}
+.page-hero .kicker::before{background:#55D8FF;}
+.nav-links a{position:relative;}
+.nav-links a.active::after{content:"";position:absolute;left:12px;right:12px;bottom:3px;height:2px;border-radius:99px;background:linear-gradient(90deg,var(--violet),var(--blue));transform-origin:left center;animation:tech-scan 2.8s ease-in-out infinite;}
+.page-hero::before{animation:tech-grid-drift 26s linear infinite;}
+.cta-band{animation:tech-grid-breathe 24s ease-in-out infinite;}
+
+@media(max-width:860px){
+  .hero-grid::before,.hero-grid::after{display:none;}
+  .hero-copy::before{top:-24px;}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;}
 }

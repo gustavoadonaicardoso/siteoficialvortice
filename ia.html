@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Consultoria e implementação de IA — Vórtice Tecnologia</title>
+<meta name="description" content="Da estratégia à implementação: consultoria em inteligência artificial, automação e integração para transformar desafios reais em soluções que funcionam.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#4F00CB">
+<link rel="stylesheet" href="css/site.css">
+<style>
+.ai-roadmap{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px;box-shadow:var(--shadow);position:relative;overflow:hidden;}
+.ai-roadmap::after{content:"";position:absolute;width:240px;height:240px;border-radius:50%;right:-100px;top:-120px;background:radial-gradient(circle,rgba(79,0,203,.15),transparent 68%);pointer-events:none;}
+.ai-roadmap-head{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line-2);padding-bottom:18px;margin-bottom:20px;position:relative;z-index:1;}
+.ai-roadmap-head b{font-size:15px;}
+.ai-roadmap-head span{font-family:var(--mono);font-size:11px;color:var(--green);display:inline-flex;align-items:center;gap:7px;}
+.ai-roadmap-head span::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(22,163,74,.14);}
+.ai-step{display:grid;grid-template-columns:36px 1fr auto;align-items:center;gap:13px;padding:15px 0;border-bottom:1px solid var(--line-2);position:relative;z-index:1;}
+.ai-step:last-child{border-bottom:0;padding-bottom:2px;}
+.ai-step .num{width:32px;height:32px;border-radius:10px;background:var(--violet-50);color:var(--violet);font-family:var(--mono);font-size:12px;font-weight:700;display:grid;place-items:center;}
+.ai-step b{font-size:14px;display:block;margin-bottom:3px;}
+.ai-step p{font-size:12.5px;color:var(--ink-3);margin:0;}
+.ai-step .status{font-family:var(--mono);font-size:10px;color:var(--ink-3);background:var(--bg-soft);border-radius:6px;padding:5px 7px;white-space:nowrap;}
+.ai-pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.ai-pillar{border:1px solid var(--line);border-radius:16px;background:#fff;padding:20px;}
+.ai-pillar b{display:block;font-size:15px;margin-bottom:7px;}
+.ai-pillar p{font-size:13.5px;line-height:1.55;color:var(--ink-2);}
+.ai-pillar .bar{height:4px;border-radius:99px;background:linear-gradient(90deg,var(--violet),var(--blue));margin-bottom:17px;}
+.ai-note{border-left:3px solid var(--violet);padding:3px 0 3px 18px;color:var(--ink-2);font-size:15px;line-height:1.7;}
+@media(max-width:860px){.ai-pillars{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.ai-roadmap{padding:20px 18px;}.ai-step{grid-template-columns:32px 1fr;}.ai-step .status{grid-column:2;justify-self:start;margin-top:-7px;}.ai-pillars{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="/"><img src="assets/vortice-logo.png" alt="Vórtice Tecnologia" class="nav-logo"></a>
+    <nav class="nav-links">
+      <a href="/" data-en="Home">Início</a>
+      <a href="ia" data-en="Solutions">Soluções</a>
+      <a href="crm" data-en="Platform">Plataforma</a>
+      <a href="automacoes" data-en="AI & Automation">IA & Automação</a>
+      <a href="integracoes" data-en="Integrations">Integrações</a>
+      <a href="sobre" data-en="Company">Sobre</a>
+    </nav>
+    <div class="nav-right">
+      <div class="lang-toggle"><button data-lang="pt" class="on">PT</button><button data-lang="en">EN</button></div>
+      <div class="nav-cta">
+        <a href="https://app.vorticetecnologia.com.br" class="btn btn-ghost" data-en="Log in">Entrar</a>
+        <a href="contato" class="btn btn-primary" data-en="Talk to a specialist">Falar com especialista</a>
+      </div>
+      <button class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<div class="nav-mobile">
+  <a href="/" data-en="Home">Início</a>
+  <a href="ia" data-en="Solutions">Soluções</a>
+  <a href="crm" data-en="Platform">Plataforma</a>
+  <a href="automacoes" data-en="AI & Automation">IA & Automação</a>
+  <a href="integracoes" data-en="Integrations">Integrações</a>
+  <a href="sobre" data-en="Company">Sobre</a>
+  <a href="contato" data-en="Contact">Contato</a>
+  <a href="contato" class="btn btn-primary" data-en="Talk to a specialist">Falar com especialista</a>
+</div>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="/">Início</a> / <span data-en="Solutions">Soluções</span></div>
+    <span class="kicker" data-en="AI consulting & implementation">Consultoria & implementação de IA</span>
+    <h1 data-en="AI that moves from conversation to operation">IA que sai do discurso e entra na operação</h1>
+    <p class="lead" data-en="We help your company identify where artificial intelligence creates value, choose the right path and implement it with the people who will use it every day.">Ajudamos sua empresa a identificar onde a inteligência artificial gera valor, escolher o caminho certo e implementar junto de quem vai usar todos os dias.</p>
+    <div class="btn-row">
+      <a href="contato" class="btn btn-primary btn-lg" data-en="Talk to a specialist">Falar com especialista</a>
+      <a href="automacoes" class="btn btn-ghost btn-lg" data-en="Explore AI & automation">Explorar IA & automação</a>
+    </div>
+  </div>
+</section>
+
+<section class="section-sm">
+  <div class="container">
+    <div class="statstrip reveal">
+      <div class="st"><b>01</b><span data-en="understand the operation">entender a operação</span></div>
+      <div class="st"><b>02</b><span data-en="prioritize the right use case">priorizar o caso certo</span></div>
+      <div class="st"><b>03</b><span data-en="implement and evolve">implementar e evoluir</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="split reveal">
+      <div class="split-copy">
+        <span class="kicker" data-en="A practical starting point">Um começo prático</span>
+        <h2 class="h-md" data-en="The best AI project starts with a real business question">O melhor projeto de IA começa com uma pergunta real do negócio</h2>
+        <p class="lead" data-en="Before choosing a model or a tool, we understand the process, the people and the decision that needs to become better. Then we turn that understanding into a solution your team can trust and use.">Antes de escolher um modelo ou uma ferramenta, entendemos o processo, as pessoas e a decisão que precisa melhorar. Depois, transformamos esse entendimento em uma solução que seu time consegue confiar e usar.</p>
+        <p class="ai-note" data-en="Our role is to connect the strategic opportunity to the technical implementation — with clarity about what changes, why it matters and how to measure it.">Nosso papel é conectar a oportunidade estratégica à implementação técnica — com clareza sobre o que muda, por que importa e como medir.</p>
+      </div>
+      <div class="split-media">
+        <div class="ai-roadmap">
+          <div class="ai-roadmap-head"><b data-en="AI transformation roadmap">Roadmap de transformação com IA</b><span data-en="in progress">em andamento</span></div>
+          <div class="ai-step"><span class="num">01</span><div><b data-en="Map the operation">Mapear a operação</b><p data-en="Processes, data and friction points">Processos, dados e pontos de atrito</p></div><span class="status" data-en="done">feito</span></div>
+          <div class="ai-step"><span class="num">02</span><div><b data-en="Prioritize the opportunity">Priorizar a oportunidade</b><p data-en="Impact, feasibility and risk">Impacto, viabilidade e risco</p></div><span class="status" data-en="done">feito</span></div>
+          <div class="ai-step"><span class="num">03</span><div><b data-en="Build the pilot">Construir o piloto</b><p data-en="Technology with your team">Tecnologia com o seu time</p></div><span class="status" data-en="now">agora</span></div>
+          <div class="ai-step"><span class="num">04</span><div><b data-en="Measure and scale">Medir e escalar</b><p data-en="Learning becomes the next improvement">O aprendizado vira a próxima melhoria</p></div><span class="status" data-en="next">próximo</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-soft">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker" data-en="Where we can help">Onde podemos ajudar</span>
+      <h2 class="h-lg" data-en="AI applied to the work that matters">IA aplicada ao trabalho que importa</h2>
+      <p class="lead" data-en="Every operation is different. We start with the context to find the use cases that make sense for your business.">Cada operação é diferente. Começamos pelo contexto para encontrar os casos de uso que fazem sentido para o seu negócio.</p>
+    </div>
+    <div class="grid g-2 reveal">
+      <div class="fcard"><div class="ficon">◌</div><h3 data-en="Intelligent service">Atendimento inteligente</h3><p data-en="Assistants that understand context, answer with reliable knowledge and involve people when needed.">Assistentes que entendem o contexto, respondem com conhecimento confiável e envolvem pessoas quando necessário.</p></div>
+      <div class="fcard"><div class="ficon">↗</div><h3 data-en="Process automation">Automação de processos</h3><p data-en="Reduce manual work in operations, finance, support and back-office routines with connected workflows.">Reduza trabalho manual em operações, financeiro, suporte e rotinas de back-office com fluxos conectados.</p></div>
+      <div class="fcard"><div class="ficon">⌁</div><h3 data-en="Knowledge and data">Conhecimento e dados</h3><p data-en="Make internal knowledge easier to find and turn operational signals into better decisions.">Torne o conhecimento interno mais fácil de encontrar e transforme sinais operacionais em decisões melhores.</p></div>
+      <div class="fcard"><div class="ficon">◫</div><h3 data-en="AI ecosystem">Ecossistema de IA</h3><p data-en="Connect the right models, tools, systems and governance for an AI strategy that can evolve.">Conecte modelos, ferramentas, sistemas e governança para uma estratégia de IA que pode evoluir.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker" data-en="Our way of working">Nosso jeito de trabalhar</span>
+      <h2 class="h-lg" data-en="Practical, collaborative and built to last">Prático, colaborativo e feito para durar</h2>
+    </div>
+    <div class="ai-pillars reveal">
+      <div class="ai-pillar"><div class="bar"></div><b data-en="Business first">Negócio primeiro</b><p data-en="Technology follows the opportunity, not the other way around.">A tecnologia segue a oportunidade, e não o contrário.</p></div>
+      <div class="ai-pillar"><div class="bar"></div><b data-en="People included">Pessoas incluídas</b><p data-en="We build with the team that knows the operation from the inside.">Construímos com quem conhece a operação por dentro.</p></div>
+      <div class="ai-pillar"><div class="bar"></div><b data-en="Responsible by design">Responsável por design</b><p data-en="Security, governance and human oversight are part of the project.">Segurança, governança e supervisão humana fazem parte do projeto.</p></div>
+      <div class="ai-pillar"><div class="bar"></div><b data-en="Evolution measured">Evolução medida</b><p data-en="We learn from use and keep improving what was implemented.">Aprendemos com o uso e seguimos melhorando o que foi implementado.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="cta-band reveal">
+      <h2 data-en-html="Ready to turn an opportunity<br>into a working solution?">Pronto para transformar uma oportunidade<br>em uma solução que funciona?</h2>
+      <p data-en="Bring your challenge. We will help you understand whether AI is the right next step — and how to implement it well.">Traga o seu desafio. Ajudamos a entender se a IA é o próximo passo certo — e como implementá-la bem.</p>
+      <div class="btn-row">
+        <a href="contato" class="btn btn-lg" style="background:#fff;color:var(--violet)" data-en="Talk to a specialist">Falar com especialista</a>
+        <a href="integracoes" class="btn btn-lg" style="background:rgba(255,255,255,.12);color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.3)" data-en="See integrations">Ver integrações</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/vortice-logo-white.png" alt="Vórtice Tecnologia">
+        <p data-en="Technology consulting and implementation for businesses that want to work smarter with AI, automation and connected systems.">Consultoria e implementação de tecnologia para empresas que querem trabalhar de forma mais inteligente com IA, automação e sistemas conectados.</p>
+        <div class="footer-soc">
+          <a href="https://www.instagram.com/vorticevt/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 1.2.1 1.8.3 2.2.4.6.2 1 .5 1.4.9.4.4.7.8.9 1.4.1.4.3 1 .4 2.2.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 1.8-.4 2.2-.2.6-.5 1-.9 1.4-.4.4-.8.7-1.4.9-.4.1-1 .3-2.2.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-1.8-.3-2.2-.4-.6-.2-1-.5-1.4-.9-.4-.4-.7-.8-.9-1.4-.1-.4-.3-1-.4-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-1.8.4-2.2.2-.6.5-1 .9-1.4.4-.4.8-.7 1.4-.9.4-.1 1-.3 2.2-.4C8.4 2.2 8.8 2.2 12 2.2Zm0 3.2A6.6 6.6 0 1 0 18.6 12 6.6 6.6 0 0 0 12 5.4Zm0 10.9A4.3 4.3 0 1 1 16.3 12 4.3 4.3 0 0 1 12 16.3Zm6.8-11.2a1.5 1.5 0 1 1-1.5-1.5 1.5 1.5 0 0 1 1.5 1.5Z"/></svg></a>
+          <a href="https://www.linkedin.com/company/v%C3%B3rtice-tecnologia-estrat%C3%A9gia-comercial/posts/?feedView=all" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5A2.5 2.5 0 1 1 0 3.5a2.5 2.5 0 0 1 4.98 0ZM.25 8.25h4.5V24h-4.5V8.25Zm7.5 0h4.3v2.15h.06c.6-1.13 2.06-2.32 4.24-2.32 4.54 0 5.38 2.99 5.38 6.87V24h-4.5v-7.2c0-1.72-.03-3.93-2.4-3.93-2.4 0-2.77 1.87-2.77 3.8V24h-4.5V8.25Z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col"><h4 data-en="Solutions">Soluções</h4><a href="ia" data-en="AI consulting">Consultoria em IA</a><a href="automacoes" data-en="AI & automation">IA & Automação</a><a href="integracoes" data-en="Systems integration">Integração de sistemas</a><a href="crm" data-en="Connected platform">Plataforma conectada</a></div>
+      <div class="footer-col"><h4 data-en="Company">Empresa</h4><a href="sobre" data-en="About">Sobre</a><a href="contato" data-en="Contact">Contato</a><a href="ia" data-en="How we work">Como trabalhamos</a><a href="https://blog.vorticetecnologia.com.br" data-en="Blog">Blog</a></div>
+      <div class="footer-col"><h4 data-en="Legal">Legal</h4><a href="#" data-en="Privacy">Privacidade</a><a href="#" data-en="Terms">Termos</a><a href="#" data-en="LGPD">LGPD</a><a href="#" data-en="Status">Status</a></div>
+    </div>
+    <div class="footer-bot"><span>© 2026 Vórtice Tecnologia. <span data-en="All rights reserved.">Todos os direitos reservados.</span></span><span class="badge"><span class="dot" style="width:8px;height:8px;border-radius:50%;background:#25D366;display:inline-block"></span><span data-en="Technology partner">Parceira de tecnologia</span></span></div>
+  </div>
+</footer>
+<script src="js/site.js"></script>
+</body>
+</html>

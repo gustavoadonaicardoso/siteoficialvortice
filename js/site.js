@@ -49,6 +49,7 @@
     var phone = '5511945479989';
     var messages = {
       'Start free': 'Olá! Quero ativar meu teste grátis da Vórtice. Podem me ajudar?',
+      'Talk to a specialist': 'Olá! Vim pelo site da Vórtice e gostaria de conversar com um especialista sobre tecnologia, IA e automação.',
       'Talk to sales': 'Olá! Gostaria de falar com o time de vendas da Vórtice para entender qual solução atende melhor a minha operação.',
       'Book a demo': 'Olá! Gostaria de agendar uma demonstração da plataforma Vórtice.'
     };
